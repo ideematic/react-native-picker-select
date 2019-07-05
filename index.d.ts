@@ -1,17 +1,17 @@
 /// <reference types="react" />
 
 declare module 'react-native-picker-select' {
-    export interface Item {
+    export interface Item<T = any> {
         label: string;
-        value: any;
+        value: T;
         key?: string | number;
         color?: string;
     }
-    export interface PickerProps {
-        onValueChange: (value: any, index: number) => void;
-        items: Item[];
-        value?: any;
-        placeholder?: Item | {};
+    export interface PickerProps<T = any> {
+        onValueChange: (value: T, index: number) => void;
+        items: Item<T>[];
+        value?: T;
+        placeholder?: Item<T> | {};
         disabled?: boolean;
         itemKey?: string | number;
         style?: object;
@@ -30,6 +30,6 @@ declare module 'react-native-picker-select' {
         pickerProps?: object;
         Icon?: React.ReactNode;
     }
-    class Picker extends React.Component<PickerProps> {}
+    class Picker<T = any> extends React.Component<PickerProps<T>> { }
     export default Picker;
 }
